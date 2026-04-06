@@ -108,20 +108,47 @@ const App = () => {
     setView('student');
   };
 
-  // ── الصفحة الرئيسية المعدلة لتناسب الهاتف ──────────────────
+  // ── الصفحة الرئيسية مع تحسينات التناسق للهاتف ──────────────────
   const LandingPage = () => (
-    <div style={{ width: '100%', maxWidth: '420px', margin: '0 auto', padding: '1rem', boxSizing: 'border-box' }}>
-      <div style={{ textAlign: 'center', padding: '2rem 0 1.5rem' }}>
-        <div style={{ fontSize: 'clamp(28px, 8vw, 38px)', fontWeight: 900, color: '#facc15', letterSpacing: 1 }}>رحّال ✦</div>
-        <div style={{ fontSize: 12, color: '#7c3aed', marginTop: 4, fontWeight: 700 }}>منصة النقل الجامعي الذكي</div>
+    <div style={{ 
+      width: '100%', 
+      maxWidth: '420px', 
+      margin: '0 auto', 
+      padding: '1.5rem', 
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1rem'
+    }}>
+      <div style={{ textAlign: 'center', padding: '1rem 0' }}>
+        <div style={{ fontSize: 'clamp(32px, 10vw, 42px)', fontWeight: 900, color: '#facc15', letterSpacing: 1 }}>رحّال ✦</div>
+        <div style={{ fontSize: '14px', color: '#7c3aed', marginTop: 4, fontWeight: 700 }}>منصة النقل الجامعي الذكي</div>
       </div>
 
-      <div style={{ background: '#1a1035', borderRadius: 20, padding: '1.25rem', border: '1px solid rgba(124,58,237,0.2)', marginBottom: 12 }}>
-        <div style={{ fontSize: 11, color: '#7c5fb5', marginBottom: 10, fontWeight: 700 }}>مسجل سابقاً؟ ادخل رقمك</div>
-        <div style={{ position: 'relative', marginBottom: 10 }}>
-          <Phone size={15} style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', color: '#7c5fb5' }} />
+      <div style={{ 
+        background: '#1a1035', 
+        borderRadius: 24, 
+        padding: '1.5rem', 
+        border: '1px solid rgba(124,58,237,0.2)',
+        boxShadow: '0 10px 25px -5px rgba(0,0,0,0.3)'
+      }}>
+        <div style={{ fontSize: 12, color: '#7c5fb5', marginBottom: 12, fontWeight: 700, textAlign: 'right' }}>مسجل سابقاً؟ ادخل رقمك</div>
+        <div style={{ position: 'relative', marginBottom: 12 }}>
+          <Phone size={18} style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', color: '#7c5fb5' }} />
           <input
-            style={{ width: '100%', padding: '12px 40px 12px 14px', borderRadius: 12, border: '1px solid rgba(124,58,237,0.3)', background: 'rgba(255,255,255,0.04)', color: '#fff', fontSize: 16, fontWeight: 700, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' }}
+            style={{ 
+              width: '100%', 
+              padding: '14px 45px 14px 15px', 
+              borderRadius: 14, 
+              border: '1px solid rgba(124,58,237,0.3)', 
+              background: 'rgba(255,255,255,0.04)', 
+              color: '#fff', 
+              fontSize: 16, 
+              fontWeight: 700, 
+              outline: 'none', 
+              fontFamily: 'inherit',
+              boxSizing: 'border-box'
+            }}
             placeholder="07XXXXXXXXX"
             type="tel"
             value={phone}
@@ -129,42 +156,81 @@ const App = () => {
             onKeyDown={e => e.key === 'Enter' && handleLogin()}
           />
         </div>
-        <button onClick={handleLogin} style={{ width: '100%', padding: 14, borderRadius: 12, background: '#facc15', color: '#1a0b2e', fontSize: 15, fontWeight: 800, border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
+        <button onClick={handleLogin} style={{ 
+          width: '100%', 
+          padding: 15, 
+          borderRadius: 14, 
+          background: '#facc15', 
+          color: '#1a0b2e', 
+          fontSize: 16, 
+          fontWeight: 800, 
+          border: 'none', 
+          cursor: 'pointer', 
+          fontFamily: 'inherit',
+          transition: 'transform 0.1s'
+        }}>
           دخول للحساب ✦
         </button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 12 }}>
-        <button onClick={() => setView('driver_reg')} style={{ background: '#1a1035', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 18, padding: '1rem', cursor: 'pointer', color: '#fff', fontFamily: 'inherit', textAlign: 'center' }}>
-          <Car size={24} style={{ color: '#facc15', margin: '0 auto 6px', display: 'block' }} />
-          <div style={{ fontSize: 12, fontWeight: 800 }}>سائق جديد</div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <button onClick={() => setView('driver_reg')} style={{ background: '#1a1035', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 20, padding: '1.25rem', cursor: 'pointer', color: '#fff', fontFamily: 'inherit' }}>
+          <Car size={32} style={{ color: '#facc15', margin: '0 auto 8px', display: 'block' }} />
+          <div style={{ fontSize: 13, fontWeight: 800 }}>سائق جديد</div>
         </button>
-        <button onClick={() => setView('student_reg')} style={{ background: '#1a1035', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 18, padding: '1rem', cursor: 'pointer', color: '#fff', fontFamily: 'inherit', textAlign: 'center' }}>
-          <GraduationCap size={24} style={{ color: '#a855f7', margin: '0 auto 6px', display: 'block' }} />
-          <div style={{ fontSize: 12, fontWeight: 800 }}>طالب جديد</div>
+        <button onClick={() => setView('student_reg')} style={{ background: '#1a1035', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 20, padding: '1.25rem', cursor: 'pointer', color: '#fff', fontFamily: 'inherit' }}>
+          <GraduationCap size={32} style={{ color: '#a855f7', margin: '0 auto 8px', display: 'block' }} />
+          <div style={{ fontSize: 13, fontWeight: 800 }}>طالب جديد</div>
         </button>
       </div>
 
       {!showAdmin ? (
-        <button onClick={() => setShowAdmin(true)} style={{ width: '100%', padding: 10, borderRadius: 12, background: 'transparent', color: '#7c5fb5', border: '1px solid rgba(124,58,237,0.15)', fontSize: 11, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5 }}>
-          <ShieldCheck size={13} /> دخول الإدارة
+        <button onClick={() => setShowAdmin(true)} style={{ 
+          width: '100%', 
+          padding: 12, 
+          borderRadius: 12, 
+          background: 'transparent', 
+          color: '#7c5fb5', 
+          border: '1px solid rgba(124,58,237,0.15)', 
+          fontSize: 12, 
+          fontWeight: 700, 
+          cursor: 'pointer', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          gap: 6,
+          marginTop: '0.5rem'
+        }}>
+          <ShieldCheck size={14} /> لوحة الإدارة
         </button>
       ) : (
-        <div style={{ background: '#1a1035', borderRadius: 16, padding: '1rem', border: `1px solid ${passErr ? '#ff4444' : 'rgba(124,58,237,0.2)'}` }}>
-          <div style={{ fontSize: 11, color: '#7c5fb5', textAlign: 'center', marginBottom: 8, fontWeight: 700 }}>🔐 رمز لوحة الإدارة</div>
-          <div style={{ position: 'relative', marginBottom: 8 }}>
-            <input
-              type={showPass ? 'text' : 'password'}
-              style={{ width: '100%', padding: '11px 14px', borderRadius: 10, border: '1px solid rgba(124,58,237,0.25)', background: 'rgba(255,255,255,0.04)', color: '#00e5ff', fontSize: 20, fontWeight: 900, letterSpacing: 6, textAlign: 'center', outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' }}
-              placeholder="••••"
-              value={adminPass}
-              onChange={e => setAdminPass(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && handleAdminLogin()}
-            />
-          </div>
+        <div style={{ background: '#1a1035', borderRadius: 18, padding: '1.25rem', border: `1px solid ${passErr ? '#ff4444' : 'rgba(124,58,237,0.2)'}` }}>
+          <div style={{ fontSize: 11, color: '#7c5fb5', textAlign: 'center', marginBottom: 10, fontWeight: 700 }}>🔐 رمز الدخول</div>
+          <input
+            type={showPass ? 'text' : 'password'}
+            style={{ 
+              width: '100%', 
+              padding: '12px', 
+              borderRadius: 12, 
+              border: '1px solid rgba(124,58,237,0.25)', 
+              background: 'rgba(255,255,255,0.04)', 
+              color: '#00e5ff', 
+              fontSize: 22, 
+              fontWeight: 900, 
+              letterSpacing: 6, 
+              textAlign: 'center', 
+              outline: 'none', 
+              boxSizing: 'border-box',
+              marginBottom: 10
+            }}
+            placeholder="••••"
+            value={adminPass}
+            onChange={e => setAdminPass(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleAdminLogin()}
+          />
           <div style={{ display: 'flex', gap: 8 }}>
-            <button onClick={handleAdminLogin} style={{ flex: 1, padding: 10, borderRadius: 10, background: '#facc15', color: '#1a0b2e', fontWeight: 800, border: 'none', fontSize: 13 }}>دخول</button>
-            <button onClick={() => setShowAdmin(false)} style={{ padding: '10px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.05)', color: '#94a3b8', fontWeight: 700, border: 'none', fontSize: 13 }}>إلغاء</button>
+            <button onClick={handleAdminLogin} style={{ flex: 2, padding: 12, borderRadius: 10, background: '#facc15', color: '#1a0b2e', fontWeight: 800, border: 'none' }}>دخول</button>
+            <button onClick={() => setShowAdmin(false)} style={{ flex: 1, padding: 12, borderRadius: 10, background: 'rgba(255,255,255,0.05)', color: '#94a3b8', fontWeight: 700, border: 'none' }}>إلغاء</button>
           </div>
         </div>
       )}
@@ -172,10 +238,21 @@ const App = () => {
   );
 
   return (
-    <div style={{ minHeight: '100vh', width: '100%', overflowX: 'hidden', fontFamily: 'Tajawal, sans-serif', background: '#0f0a1e', color: '#fff' }} dir="rtl">
+    <div style={{ 
+      minHeight: '100vh', 
+      width: '100%', 
+      overflowX: 'hidden', 
+      fontFamily: 'Tajawal, sans-serif', 
+      background: '#0f0a1e', 
+      color: '#fff',
+      display: 'flex',
+      flexDirection: 'column'
+    }} dir="rtl">
       {view === 'landing'     && <LandingPage />}
       {view === 'driver_reg'  && <DriverRegistration  regions={regions} colleges={colleges} settings={settings} onBack={() => setView('landing')} onSubmit={onDriverSubmit} />}
       {view === 'student_reg' && <StudentRegistration regions={regions} colleges={colleges} settings={settings} onBack={() => setView('landing')} onSubmit={onStudentSubmit} />}
+      
+      {/* باقي الصفحات كما هي في الكود الأصلي */}
       {view === 'student'     && currentUser?.type === 'student' && (
         <StudentDashboard
           student={currentUser.data}
